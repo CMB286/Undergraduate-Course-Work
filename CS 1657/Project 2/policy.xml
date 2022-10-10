@@ -1,0 +1,31 @@
+<root>
+    <!--Menu.access(accessLevel="write") ← HeadChef.chef-->
+    <attribute domain="menu" function="access" accessLevel="write" name="headchef"/>
+    <attribute domain="menu" function="access" accessLevel="read" name="chef"/>
+    <attribute domain="menu" function="access" accessLevel="read" name="customer"/>
+    <attribute domain="menu" function="access" accessLevel="read" name="manager"/>
+
+    <attribute domain="diningroom" function="access" accessLevel="write" name="owner"/>
+    <attribute domain="diningroom" function="access" accessLevel="read" name="manager"/>
+    <attribute domain="diningroom" function="access" accessLevel="read" name="customer"/>
+
+    <attribute domain="kitchen" function="access" accessLevel="write" name="headchef"/>
+    <attribute domain="kitchen" function="access" accessLevel="read" name="chef"/>
+    <attribute domain="kitchen" function="access" accessLevel="read" name="owner"/>
+    
+    <attribute domain="pizzaoven" function="access" accessLevel="write" name="chef" type="pizza"/>
+    <attribute domain="pizzaoven" function="access" accessLevel="read" name="chef"/>
+    <attribute domain="pastadough" function="access" accessLevel="write" name="chef" type="pasta"/>
+    <attribute domain="pastadough" function="access" accessLevel="read" name="chef"/>
+    <attribute domain="fishstation" function="access" accessLevel="write" name="chef" type="fish"/>
+    <attribute domain="fishstation" function="access" accessLevel="read" name="chef"/>
+    <attribute domain="meatstation" function="access" accessLevel="write" name="chef" type="meat"/>
+    <attribute domain="meatstation" function="access" accessLevel="read" name="chef"/>
+    <attribute domain="pastrystation" function="access" accessLevel="write" name="chef" type="pastry"/>
+    <attribute domain="pastrystation" function="access" accessLevel="read" name="chef"/>
+
+    <attribute domain="cancelreservation" function="access" accessLevel="write" name="manager" type="head"/>
+
+    <attribute domain="reservation" function="access" accessLevel="write" name="manager"/>
+    <attribute domain="reservation" function="access" accessLevel="read" name="owner"/>
+</root>

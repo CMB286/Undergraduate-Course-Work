@@ -1,0 +1,31 @@
+<root>
+    <!--HeadChef.chef ← Gordon Ramsey-->
+    <attribute domain="headchef" name="chef" constant="Gordon Ramsey"/>
+
+    <!--Chef.chef ← Scott Leibfried-->
+    <attribute domain="chef" name="chef" constant="Scott Leibfried"/>
+    <attribute domain="chef" name="chef" constant="Christina Wilson"/>
+   
+   <!--Parameterized Chefs-->
+    <attribute domain="chef" name="chef" type="pizza" constant="Chuck E. Cheese"/>
+    <attribute domain="chef" name="chef" type="pasta" constant="Fettuccine Barilla"/>
+    <attribute domain="chef" name="chef" type="fish" constant="John Silver"/>
+    <attribute domain="chef" name="chef" type="meat" constant="Colonel Sanders"/>
+    <attribute domain="chef" name="chef" type="pastry" constant="Pillsbury Doughboy"/>
+
+    <!--Chef.chef ← HeadChef.chef-->
+    <attribute domain="chef" name="chef" constant="headchef"/>
+
+    <!--Customer.customer ← Caleb Beichner-->
+    <attribute domain="customer" name="customer" constant="Caleb Beichner"/>
+    <attribute domain="customer" name="customer" constant="Bill Garrison"/>
+
+    <!--Owner.manager ← Oskar-->
+    <attribute domain="owner" name="manager" constant="Oskar"/>
+
+    <attribute domain="manager" name="manager" constant="Jean-Philippe" type="head"/>
+    <attribute domain="manager" name="manager" constant="Michael Scott"/>
+
+    <!--Manager.manager ← Owner.role-->
+    <attribute domain="manager" name="manager" constant="owner"/>
+</root>
