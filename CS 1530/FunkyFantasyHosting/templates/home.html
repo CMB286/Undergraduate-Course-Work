@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Funky Fantasy Hosting{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft active" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<h3> Welcome back {{ session["username"] }}! We hope you continue to enjoy Funky Fantasy Hosting!</h3>
+		<h3><a href="/new_league">Click here to import a league from ESPN(commisioner).</a></h3>
+		<h3><a href="/join_league">Click here to join an already imported league from ESPN(member).</a></h3>
+	{% else %}
+		<h3> Welcome to Funky Fantasy Hosting! </h3>
+		<h3>If you are new here click the create account option to get started! </h3>
+		<h3>If you are a returning member, welcome back! Please click log in to enter your account </h3>
+	{% endif %}
+{% endblock %}

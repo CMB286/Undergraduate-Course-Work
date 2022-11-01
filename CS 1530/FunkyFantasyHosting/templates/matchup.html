@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - Account{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<h2>Week {{ week }} Matchup</h2>
+		<div class="container">
+			<div id="away">
+				<h3>{{ awayTeam.name }}</h3>
+				<h4>{{ awayTeam.totalPoints }}</h4>
+				<table id="awayTeam">
+					<tr>
+						<th class="Pos">Pos</th>
+						<th class="Name">Player Name</th>
+						<th class="Points">Points</th>
+					</tr>
+					{% for player in awayTeam.roster %}
+					<tr class="rBorder">
+						<td class="Pos">{{ player.position }}</td>
+						<td class="rBorder Name"><a href="{{ player.link }}" target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+						<td class="Points">{{ player.points }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<table id="awayBench">
+					<tr>
+						<th class="Points blank">Pos</th>
+						<th class="Name blank">Player Name</th>
+						<th class="Pos blank">Points</th>
+					</tr>
+					{% for player in awayTeam.bench %}
+						<tr class="rBorder">
+							<td class="Pos">Bench</td>
+							<td class="rBorder Name"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+							<td class="Points">{{ player.points }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div id="home">
+				<h3>{{ homeTeam.name }}</h3>
+				<h4>{{ homeTeam.totalPoints }}</h4>
+				<table id="homeTeam">
+					<tr>
+						<th class="Points">Points</th>
+						<th class="Name">Player Name</th>
+						<th class="Pos">Pos</th>
+					</tr>
+					{% for player in homeTeam.roster %}
+					<tr class="rBorder">
+						<td class="Points">{{ player.points }}</td>
+						<td class="rBorder Name"><a href="{{ player.link }}" target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+						<td class="Pos">{{ player.position }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<table id="homeBench">
+					<tr>
+						<th class="Points blank">Points</th>
+						<th class="Name blank">Player Name</th>
+						<th class="Pos blank">Pos</th>
+					</tr>
+					{% for player in homeTeam.bench %}
+						<tr class="rBorder">
+							<td class="Points">{{ player.points }}</td>
+							<td class="rBorder Name"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+							<td class="Pos">Bench</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	{% else %}
+		<h2 class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

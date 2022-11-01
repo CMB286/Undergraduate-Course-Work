@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - FA{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<!-- There is a user logged in. -->
+		<h2>Free Agents</h2>
+		<table class="fCenter">
+			<tr>
+				<th class="FAPlayer">Player</th>
+				<th class="Team">Position</th>
+				<th class="Pos">Add</th>
+			</tr>
+			{% if freeAgents %}
+				{% for player in freeAgents %}
+					<tr class="rBorder">
+						<td class="League"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+						<td class="Team rBorder">{{ player.position }}</td>
+						<td class="Pos">Add Player</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+					<tr class="rBorder">
+						<td class="Team rBorder">NA<td>
+						<td>NA</td>
+						<td>NA<td>
+					</tr>
+			{% endif %}
+		</table>
+	{% else %}
+		<!-- There is no user logged in. -->
+		<h2 href="/login" class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - Account{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft active" href="/account">Account</a>
+		<a class="fLeft" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<!-- There is a user logged in. -->
+		<h2>Welcome, {{ session["username"] }}</h2>
+		<table class="fCenter">
+			<tr>
+				<th class="League">League</th>
+				<th class="Team">Team</th>
+				<th class="Record">W-L</th>
+			</tr>
+			{% if teams %}
+				{% for team in teams %}
+					<tr class="rBorder">
+						<td class="League"><a href="/league/{{ team.league }}">{{ team.league }}</a></td>
+						<td class="Team rBorder"><a href="/team/{{ team.league }}/{{ team.team }}">{{ team.team }}</a></td>
+						<td class="Record"><a href="/league/{{ team.league }}">{{ team.record }}</a></td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<tr class="rBorder">
+					<td>NA</td>
+					<td>NA</td>
+					<td> NA</td>
+				</tr>
+			{% endif %}
+		</table>
+		<h3><a href="/new_league">Click here to import a league from ESPN(commisioner).</a></h3>
+		<h3><a href="/join_league">Click here to join an already imported league from ESPN(member).</a></h3>
+	{% else %}
+		<!-- There is no user logged in. -->
+		<h2 href="/login" class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - Join League{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<h2>Join Existing ESPN League</h2>
+		<h4>{% block h4 %}Enter the leagueID and team name combination for the league you wish to join{% endblock %}</h4>
+		<form action="" method="post">
+			<label for="league_id" class="label_text">ESPN League ID: </label>
+			<input type="text" id="league_id" name="league_id">
+			<label for="team_name" class="label_text">ESPN Team Name: </label>
+			<input type="text" id="team_name" name="team_name">
+			<br />
+			<input class="submit" type="submit" value="Submit" />
+		</form>
+	{% else %}
+		<h2 class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}
