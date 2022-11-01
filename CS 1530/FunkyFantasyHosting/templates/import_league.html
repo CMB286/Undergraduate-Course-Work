@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - Import League{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<h2>Import New ESPN League</h2>
+		{% if message %}
+			<h3>{{ message }}</h3>
+		{% endif %}
+		<h4>{% block h4 %}Enter the leagueID and league type for your imported league{% endblock %}</h4>
+		<form action="" method="post">
+			<p class="form">Select League Type:</p>
+			<input type="radio" id="guillotine" name="league_type" value="0">
+			<label for="guillotine" class="radio_button">Guillotine</label><br>
+			<input type="radio" id="vampire" name="league_type" value="1">
+			<label for="vampire" class="radio_button">Vampire</label><br>
+			<input type="radio" id="pirate" name="league_type" value="2">
+			<label for="pirate" class="radio_button">Pirate</label><br>
+			<br />
+			<label for="league_id" class="label_text">ESPN League ID: </label>
+			<input type="text" id="league_id" name="league_id">
+			<br />
+			<input class="submit" type="submit" value="Submit" />
+		</form>
+	{% else %}
+		<h2 class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

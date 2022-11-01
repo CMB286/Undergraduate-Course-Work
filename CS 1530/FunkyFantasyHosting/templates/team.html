@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}Funky Fantasy Hosting - Team{% endblock %}
+
+{% block head %}
+	<script type="text/javascript" src="{{ url_for('static', filename='FFH_script.js') }}"></script>
+{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league/{{ league }}">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] == teamOwner %}
+		<h2>Current Roster</h2>
+		<table class="fCenter">
+			<tr>
+				<th class="Pos">Pos</th>
+				<th class="Name">Player Name</th>
+				<th class="Opp">Opponent</th>
+				<th class="Points">Points</th>
+				<th class="Swap blank">Swap</th>
+			</tr>
+			{% for player in team %}
+				<tr class="rBorder" id="{{ player.name }}">
+					<td class="Pos">{{ player.position }}</td>
+					<td class="rBorder Name"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+					<td class="rBorder Opp">{{ player.opp }}</td>
+					<td class="rBorder Points">{{ player.points }}</td>
+					<td><button type="button" onclick="swapPlayers({{ player }});">Swap</button></td>
+				</tr>
+			{% endfor %}
+		</table>
+		<table class="fCenter">
+			{% for player in bench %}
+				<tr class="rBorder" id="{{ player.name }}">
+					<td class="Pos">Bench</td>
+					<td class="rBorder Name"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+					<td class="rBorder Opp">{{ player.opp }}</td>
+					<td class="rBorder Points">{{ player.points }}</td>
+					<td><button type="button" onclick="swapPlayers({{ player }});">Swap</button></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% elif session["username"] %}
+		<h2>Current Roster</h2>
+		<table class="fCenter">
+			<tr>
+				<th class="Pos">Pos</th>
+				<th class="Name">Player Name</th>
+				<th class="Opp">Opponent</th>
+				<th class="Points">Points</th>
+			</tr>
+			{% for player in team %}
+				<tr class="rBorder">
+					<td class="Pos">{{ player.position }}</td>
+					<td class="rBorder Name"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+					<td class="rBorder Opp">{{ player.opp }}</td>
+					<td class="Points">{{ player.points }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<table class="fCenter">
+			{% for player in bench %}
+				<tr class="rBorder">
+					<td class="Pos">Bench</td>
+					<td class="rBorder Name"><a href={{ player.link }} target="_blank" rel="noopener noreferrer">{{ player.name }}</a></td>
+					<td class="rBorder Opp">{{ player.opp }}</td>
+					<td class="Points">{{ player.points }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<h2 class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

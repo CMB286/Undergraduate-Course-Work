@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - Import League{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<h2>Import New ESPN League</h2>
+		<h3>League imported successfully.</h3>
+		<p>League Type: {{league_type}}</p>
+		<p>League ID: {{league_id}}</p>
+		<a href="/account">Click here to return to account page.</a>
+	{% else %}
+		<h2 class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

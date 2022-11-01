@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight active" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	<h4>{% block h4 %}Fill out your account information below to register an account with Funky Fantasy Hosting! {% endblock %}</h4>
+	<br>
+
+	<form>
+        <section>
+          <div class="form-group">
+                <label for="email"><b>Enter Email</b></label><br>
+                <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
+                <br>
+          </div>
+          <div class="form-group">
+              <label for="username"><b>Create Username</b></label><br>
+              <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
+              <br>
+          </div>
+          <div class="form-group">
+              <label for="screenname"><b>Create Screen Name</b></label><br>
+              <input type="text" class="form-control" placeholder="Enter Screen Name" name="screenname" id="screenname" required>
+              <br>
+          </div>
+          <div class="form-group">
+              <label for="password"><b>Type Password</b></label><br>
+              <input type="password" class="form-control" placeholder="Enter Password" name="password" id="password" required>
+              <br>
+          </div>
+          <div class="form-group">
+              <button type="submit" name="create_account" onclick="return isValidPassword()" value="True" formmethod="post"  class="btn btn-primary">Create Account</button>
+          </div>
+		</section>
+    </form>
+	
+{% endblock %}

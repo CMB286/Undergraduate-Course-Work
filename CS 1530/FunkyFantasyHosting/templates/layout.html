@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}CPS43 Catering{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}" />
+	{% block head %}{% endblock %}
+</head>
+<body>
+	{% block navbar %}
+		<div class="topnav">
+		<a class="fLeft active" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+		</div>
+	{% endblock %}
+	<h1><a href="/home">Funky Fantasy Hosting</a></h1>
+	{% block body %}
+	{% endblock %}
+</body>
+</html>

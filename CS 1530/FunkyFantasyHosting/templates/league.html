@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}FFH - League{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft active" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	{% if session["username"] %}
+		<h3><a href="/freeAgents">Click here to view your league's available free agents.</a></h3>
+		<div class="container">
+			<div>
+				<table class="fCenter" id="standings">
+					<tr>
+						<th>Team Name</th>
+						<th>Record</th>
+					</tr>
+					{% if teams %}
+						{% for team in teams %}
+							<tr class="rBorder">
+								<td><a href="/team/{{ session['leagueID'] }}/{{ team.name}}">{{ team.name }}</a></td>
+								<td>{{ team.wins }} - {{ team.losses }}</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						<tr class="rBorder">
+							<td>N/A</td>
+							<td>N/A</td>
+						</tr>
+					{% endif %}
+				</table>
+			</div>
+		</div>
+
+	{% else %}
+		<h2 class="fCenter">Must be logged in to view page.</h2>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,236 @@
+body {
+	margin: 0;
+	background-color: white;
+}
+
+h1 {
+	margin-top: 0;
+	text-align: center;
+	font-family: "Papyrus", fantasy;
+	font-size: 4.5em;
+	padding-bottom: 5px;
+	-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+h1 > a {
+	color: #e9f018;
+}
+
+h2 {
+	font-size: 50px;
+	text-align: center;
+}
+
+h3 {
+	font-size: 30px;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h4 {
+	font-size: 25px;
+	text-align: center;
+	margin-top: 0px;
+}
+
+table {
+	width: 80%;
+	background-color: white;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+
+td  {
+	text-align: center;
+	width: 25%;
+	font-size: 20px;
+}
+
+th {
+	text-align: center;
+	font-size: 40px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button {
+	border: 2px solid black;
+	background-color: white;
+	border-color: #5f9ea0;
+	color: black;
+	padding: 5px;
+	border-radius: 10%;
+}
+
+button:hover {
+	background-color: #5f9ea0;
+	cursor: pointer;
+}
+
+.blank {
+	color: white;
+}
+
+.form {
+	font-size: 1.5em;
+}
+
+.radio_button, .label_text {
+	font-size: 1.5em;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #5f9ea0;
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+.topnav a {
+	text-align: center;
+	color: black;
+	padding: 10px 12px;
+	text-decoration: none;
+}
+
+.topnav a:hover, .topnav b:hover {
+  background-color: #2d63ed;
+  cursor: pointer;
+}
+
+.topnav a.active {
+  background-color: #e9f018;
+}
+
+.Pos, .Record, .Points, .Swap {
+	width: 10%;
+}
+
+.Name, .Opp {
+	width: 35%;
+}
+
+.League, .Team, .FAPlayer {
+	width: 45%;
+}
+
+.fLeft {
+	float: left;
+}
+
+.fRight {
+	float: right;
+}
+
+.fCenter {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rBorder {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.submit {
+	margin-top: 1vh;
+}
+
+.container {
+	display: flex;
+}
+
+.Selected {
+	background-color: #e9f018;
+	border-color: #e9f018;
+}
+
+.Selected:hover {
+	background-color: #e9f018;
+}
+
+.container > div {
+	width: 50%;
+}
+
+#standings {
+	margin-top: 0px;
+}
+
+#standings th {
+	font-size: 50px;
+}
+
+#standings td {
+	font-size: 30px;
+	padding-top: 5px;
+}
+
+#matchups td {
+	width: 20%;
+	white-space: nowrap;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.match_name {
+	width: 45%;
+}
+
+.match_points {
+	width: 10%;
+}
+
+#match_header {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+#player {
+	margin: auto;
+}
+
+#player th {
+	font-size: 30px;
+	white-space: nowrap;
+	padding: 10px;
+}
+
+#player td {
+	font-size: 10px;
+	width: auto;
+}
+
+#awayTeam, #homeTeam {
+	margin: auto;
+	width: 90%;
+}
+
+#awayBench, #homeBench {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+#awayTeam th, #homeTeam th, #awayBench th, #homeBench th {
+	font-size: 30px;
+}
+
+#awayTeam .Pos, #homeTeam .Pos, #awayBench .Pos, #homeBench .Pos {
+	width: 10%;
+}
+
+#awayTeam .Name, #homeTeam .Name, #awayBench .Name, #homeBench .Name {
+	width: 80%;
+}
+
+#awayTeam .Points, #homeTeam .Points, #awayBench .Points, #homeBench .Points {
+	width: 10%;
+}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block navbar %}
+	<div class="topnav">
+		<a class="fLeft" href="/home">Home</a>
+		<a class="fLeft" href="/account">Account</a>
+		<a class="fLeft" href="/league">League</a>
+
+		{% if session["username"] %}
+			<a class="fRight" href="/logout">Logout</a>
+		{% else %}
+			<a class="fRight" href="/create_account">Create Account</a>
+			<a class="fRight active" href="/login">Login</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	<h4>{% block h4 %}Enter your login credentials below to access your Funky Fantasy Hosting account {% endblock %}</h4>
+	<br>
+	
+	<form>
+        <section>
+            <div class="form-group">
+              <label for="username"><b>Username</b></label><br>
+              <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
+              <br>
+            </div>
+
+            <div class="form-group">
+              <label for="password"><b>Password</b></label><br>
+              <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+              <br>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" value="True" name="login" formmethod="POST" class="btn btn-primary">Login</button>
+              <br>
+            </div>
+		</section>
+    </form>
+{% endblock %}
