@@ -1,3 +1,0 @@
-**Explain the pros and cons of using a FIFO queue (as compared to a hash table) for the global semaphore list**
-
-In the FIFO queue implementation, the queue is much simpler to implement compared to a hash table. As processes arrive, we schedule them and know that they will run whenever it is their turn. This helps to reduce the possibility of starvation within the semaphore. However, this comes at a disadvantage in terms of priority. Processes that have a lower priority can be put into the queue before higher priority processes. This means that the lower priority processes need to execute before allowing the higher priority ones. 
